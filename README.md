@@ -5,7 +5,6 @@ Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br>
 ## Requirements
--CK3<br>
 -CK3 Mods<br>
 -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
 -WinMerge (or whate ever compare tool you want)<br>
