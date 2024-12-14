@@ -31,6 +31,12 @@ WIP Use at your own risk
 8c. Close out of this WinMerge tab when you are finished<br>
 10. Remove the mod directory you have finished merging <br>
 11. Go back to step 7 if there are more mods to be merged.<br>
+12. You are done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
+13. So you're also allowed to overwrite fields from outside the file.  Skipping this wouldn't be the end of the world, these conflicts would continue to behave as before. To handle that you'll need to make a file and have it loaded last to overwrite their overwrites.<br>
+    A list of these fields have been provided to you in Manual Merge Conflict Output.txt.<br>
+14. More or less go through each field, open up the relevant files and do a manual compare and choose who should win.<br>
+    Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_mycomppatchoverride.txt
+15. Repeat until you're done or get bored.
 
 ## Configuring up WinMerge
 #insert screenshot here<br>
