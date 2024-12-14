@@ -1,5 +1,8 @@
 # CK3-Conflict-Helper
 WIP Use at your own risk
+Do you hvae more mods than off the shelf compatibility patches can support?<br>
+Do you know what you're doing?<br>
+If you answered yes to all of the above hopefully this tool can make life easier.<br>
 ## Requirements
 -CK3\n<br>
 -CK3 Mods<br>
