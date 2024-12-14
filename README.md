@@ -1,7 +1,7 @@
 # CK3-Conflict-Helper
 
 Requires:
-CK3
+CK3\n
 CK3 Mods
 Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)
 WinMerge (or whate ever compare tool you want)
