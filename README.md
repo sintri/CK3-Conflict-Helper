@@ -18,8 +18,8 @@ Stick all the mods from your modlist into a directory<br>
 4. Create or copy over the description.mod provided into your comp patch folder<br>
 4b. Modify the name= in description.mod to your comp patch name<br>
 5. Open up WinMerge (or whatever merge tool you're familar with<br>
-5b. If this is your first time, configure WinMerge for easier use, see below.
-**For Each Mod Folder, Do the Following:**
+5b. If this is your first time, configure WinMerge for easier use, see below<br>
+<b>For Each Mod Folder, Do the Following:<b>
 
 
 <h3>WinMerge Configurations:</h3><br>
