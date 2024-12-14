@@ -4,6 +4,12 @@ Do you hvae more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br>
+## Outputs
+    Mod Folders - Contains files that have conflicts with other mods, grouped by mods
+    Conflict Output.txt - List of files that contain overwrites to other fields grouped by field<br>
+    Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
+    Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
+    Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means this field has been defined more than once in a file<br>
 ## Requirements
 -CK3 Mods<br>
 -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
