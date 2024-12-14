@@ -21,9 +21,9 @@ WIP Use at your own risk
     b. If this is your first time, configure WinMerge for easier use, see below<br>
 7. <b>For Each Mod Folder, Do the Following:</b><br>
 <i>Tip: Do comp patches last as they typically contain overwrites that should take precedence over other things</i><br>
-    8. Open up mod folder<br>
-        b.  Copy contents of mod folder into your comp patch folder<br>
-        c. If no overwrites are present skip to step 9<br>
+    8. Open up a mod folder<br>
+        b.  Copy contents of the mod folder into your comp patch folder<br>
+        c. If no overwrites are present skip to step 10<br>
         d. Skip overwrites if they are present as you'll be using a merge tool for this.<br>
     9. Open up the two files in WinMerge<br>
     #insert screenshot here<br>
