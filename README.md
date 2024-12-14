@@ -38,10 +38,12 @@ If you answered yes to all of the above hopefully this tool can make life easier
 12. You are done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
 13. <b>Overtime Steps</b><br>
     So you're also allowed to overwrite fields from outside the file.  Skipping this wouldn't be the end of the world, these conflicts would continue to behave as before. To handle that you'll need to make a file and have it loaded last to overwrite their overwrites.<br>
-    A list of these fields have been provided to you in Manual Merge Conflict Output.txt.<br>
-14. More or less go through each field, open up the relevant files and do a manual compare and choose who should win.<br>
+    A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
+    Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
+    Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
+15. More or less go through each field, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_mycomppatchoverride.txt
-15. Repeat until you're done or get bored.
+16. Repeat until you're done or get bored.
 
 ## Configuring up WinMerge
 #insert screenshot here<br>
