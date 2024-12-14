@@ -19,7 +19,7 @@ WIP Use at your own risk
 5b. Modify the name= in description.mod to your comp patch name<br>
 6. Open up WinMerge (or whatever merge tool you're familar with<br>
 6b. If this is your first time, configure WinMerge for easier use, see below<br>
-<b>For Each Mod Folder, Do the Following:</b>b><br>
+<b>For Each Mod Folder, Do the Following:</b><br>
 <i>Tip: Do comp patches last as they typically contain overwrites that should take precedence over other things</i><br>
 7. Open up mod folder<br>
 7b. Copy contents of mod folder into your comp patch folder<br>
