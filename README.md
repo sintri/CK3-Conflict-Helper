@@ -9,7 +9,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
     Conflict Output.txt - List of files that contain overwrites to other fields grouped by field<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-    Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means this field has been defined more than once in a file<br>
+    Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file<br>
 ## Requirements
 -CK3 Mods<br>
 -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
