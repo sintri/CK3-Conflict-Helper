@@ -1,1 +1,1 @@
-# CK3-Merge-Helper
+# CK3-Conflict-Helper
