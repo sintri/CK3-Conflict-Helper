@@ -10,8 +10,8 @@ WIP Use at your own risk
 ## Instructions
 1. Stick all the mods from your modlist into a directory<br>
 2. Open up a command prompt and navigate to your CK3-Conflict-Helper directory<br>
-- type python3 chm.py "DRIVE:\PATH\TO\WHEREVER\YOU\DUMPED\YOUR\MODLIST"<br>
-2c.Press enter and let it run<br>
+    a. type python3 chm.py "DRIVE:\PATH\TO\WHEREVER\YOU\DUMPED\YOUR\MODLIST"<br>
+    b. Press enter and let it run<br>
 3. When done navigate to the ToMerge folder<br>
 #insert screenshot here<br>
 4. Create a base mod folder to hold your comp patch<br>
