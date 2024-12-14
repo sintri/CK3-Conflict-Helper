@@ -41,7 +41,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-15. More or less go through each field, open up the relevant files and do a manual compare and choose who should win.<br>
+15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_mycomppatchoverride.txt
 16. Repeat until you're done or get bored.
 
