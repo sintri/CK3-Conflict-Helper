@@ -1,12 +1,13 @@
 # CK3-Conflict-Helper
 WIP Use at your own risk
-
+## Requirements
 <h3>Requires</h3>
 -CK3\n<br>
 -CK3 Mods<br>
 -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
 -WinMerge (or whate ever compare tool you want)<br>
 <p></p>
+## Instructions
 <h3>Instructions</h3>
 1. Stick all the mods from your modlist into a directory<br>
 2. Open up a command prompt and navigate to your CK3-Conflict-Helper directory<br>
@@ -32,5 +33,6 @@ WIP Use at your own risk
 9. Remove the mod directory you have finished merging <br>
 10. Continue on to next mod file<br>
 
+## Setting up WinMerge
 <h3>WinMerge Configurations</h3>
 #insert screenshot here<br>
