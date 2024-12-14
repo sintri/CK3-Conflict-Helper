@@ -49,7 +49,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
 15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_mycomppatchoverride.txt
-    Optionally now you can remove the none native file override since that file functionally does nothing useful now.
+    Optionally now you can remove the none native file if you've overriden everything in that file.
 17. Repeat until you're done or get bored.
 
 ## Configuring up WinMerge
