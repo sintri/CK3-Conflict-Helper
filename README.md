@@ -35,7 +35,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
     c. Close out of this WinMerge tab when you are finished<br>
 10. Remove the mod directory you have finished merging <br>
 11. Go back to step 7 if there are more mods to be merged.<br>
-12. You are done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
+12. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
 13. <b>Overtime Steps</b><br>
     So you're also allowed to overwrite fields from outside the file.  Skipping this wouldn't be the end of the world, these conflicts would continue to behave as before. To handle that you'll need to make a file and have it loaded last to overwrite their overwrites.<br>
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
