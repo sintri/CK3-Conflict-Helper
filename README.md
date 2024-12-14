@@ -16,19 +16,19 @@ WIP Use at your own risk
 #insert screenshot here<br>
 4. Create a base mod folder to hold your comp patch<br>
 5. Create or copy over the description.mod provided into your comp patch folder<br>
-5b. Modify the name= in description.mod to your comp patch name<br>
+    b. Modify the name= in description.mod to your comp patch name<br>
 6. Open up WinMerge (or whatever merge tool you're familar with<br>
-6b. If this is your first time, configure WinMerge for easier use, see below<br>
+    b. If this is your first time, configure WinMerge for easier use, see below<br>
 7. <b>For Each Mod Folder, Do the Following:</b><br>
 <i>Tip: Do comp patches last as they typically contain overwrites that should take precedence over other things</i><br>
 8. Open up mod folder<br>
-8b.  Copy contents of mod folder into your comp patch folder<br>
-8c. If no overwrites are present skip to step 9<br>
-8d. Skip overwrites if they are present as you'll be using a merge tool for this.<br>
+    b.  Copy contents of mod folder into your comp patch folder<br>
+    c. If no overwrites are present skip to step 9<br>
+    d. Skip overwrites if they are present as you'll be using a merge tool for this.<br>
 9. Open up the two files in WinMerge<br>
 #insert screenshot here<br>
-9b. Go through each file present and merge the conflict into your file<br>
-8c. Close out of this WinMerge tab when you are finished<br>
+    b. Go through each file present and merge the conflict into your file<br>
+    c. Close out of this WinMerge tab when you are finished<br>
 10. Remove the mod directory you have finished merging <br>
 11. Go back to step 7 if there are more mods to be merged.<br>
 12. You are done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
