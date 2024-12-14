@@ -30,7 +30,7 @@ WIP Use at your own risk
 9b. Go through each file present and merge the conflict into your file<br>
 8c. Close out of this WinMerge tab when you are finished<br>
 10. Remove the mod directory you have finished merging <br>
-11. Continue on to next mod file<br>
+11. Go back to step 7 if there are more mods to be merged.<br>
 
 ## Configuring up WinMerge
 #insert screenshot here<br>
