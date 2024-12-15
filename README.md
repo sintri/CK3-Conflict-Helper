@@ -56,5 +56,5 @@ If you answered yes to all of the above hopefully this tool can make life easier
 18. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.
 
-## Configuring up WinMerge
+## Configuring WinMerge
 #insert screenshot here<br>
