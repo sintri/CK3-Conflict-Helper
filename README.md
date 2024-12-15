@@ -53,6 +53,8 @@ If you answered yes to all of the above hopefully this tool can make life easier
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt
     Optionally now you can remove the none native file.
 17. Repeat until you're done or get bored.
+18. <b>Extra Overtime</b><br>
+    This tool does not handle GUI files at the moment, those you'll need to merge on your own.
 
 ## Configuring up WinMerge
 #insert screenshot here<br>
