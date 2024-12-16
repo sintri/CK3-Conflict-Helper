@@ -29,13 +29,10 @@ If you answered yes to all of the above hopefully this tool can make life easier
 6. Open up WinMerge (or whatever merge tool you're familar with<br>
     b. If this is your first time, configure WinMerge for easier use, see below<br>
     c. Select the MyCompPatch folder as your first entry.
-7. <b>For Each Mod Folder, Do the Following:</b><br>
-    8. Set the mod as your second entry.
-9. Open up the two files in WinMerge<br>
-#insert screenshot here<br>
-    b. Go through each file present and merge the conflict into your file<br>
-        #insert screenshot here<br>
-    c. Close out of this WinMerge tab when you are finished<br>
+7. <b>For Each Mod Folder in ToMerge, Do the Following:</b><br>
+    b. Set the mod as your second entry.
+    c. Go through each file that shows up as conflicted.
+    d. Delete the folder when you're done
 10. Remove the mod directory you have finished merging <br>
 11. Go back to step 7 if there are more mods to be merged.<br>
 12. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
@@ -52,6 +49,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
 17. Repeat until you're done or get bored.
 18. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.
+    This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
 ## Configuring WinMerge
 #insert screenshot here<br>
