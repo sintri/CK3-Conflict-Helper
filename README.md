@@ -45,9 +45,9 @@ If you answered yes to all of the above hopefully this tool can make life easier
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-9. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
+9. Go through each file, open up the relevant files and do a manual compare and choose who/which entires should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
-    Optionally now you can remove the none native file.<br>
+    Optionally now you can remove the files involved in this.<br>
     Tip: <i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
 10. Repeat until you're done or get bored.<br>
 11. <b>Extra Overtime</b><br>
