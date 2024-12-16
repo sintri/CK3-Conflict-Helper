@@ -5,7 +5,7 @@ The program does clear files under outputFolder so be careful where you point it
 Do you hvae more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
-If you answered yes to all of the above hopefully this tool can make life easier.<br>
+If you answered yes to all of the above hopefully this tool can make life easier.<br><br>
 <b>Also make sure you know what you're doing, if you don't you'll be wasting alot of time and making things worse.<br></b>
 <i>Remember the point is not to merge every file together, it is to resolve object confclits. If objects in a file are naturally going to be overwritten, then a comp patch is not needed for those files.  If the object you want to win has a seperate mod file overwriting it by nature of file name ordering, then you'll need to create a comp patch.</i>
 ## Outputs
