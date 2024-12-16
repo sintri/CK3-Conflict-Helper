@@ -7,15 +7,14 @@ If you answered yes to all of the above hopefully this tool can make life easier
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
-    Conflict Output.txt - List of files that contain overwrites to other fields grouped by field<br>
-    Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
-    Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-    Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file<br>
+    Conflict Output.txt - List of files that contain overwrites to other fields grouped by field
+    Manual Merge Conflict Output.txt - Grouped by conflicting field name
+    Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare
+    Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file
 ## Requirements
--CK3 Mods<br>
--Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
--WinMerge (or whate ever compare tool you want)<br>
-<p></p>
+    -CK3 Mods<br>
+    -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
+    -WinMerge (or whate ever compare tool you want)<br>
 
 ## Instructions
 1. Stick all the mods from your modlist into a directory<br>
