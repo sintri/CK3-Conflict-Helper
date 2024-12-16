@@ -21,34 +21,36 @@ If you answered yes to all of the above hopefully this tool can make life easier
 2. Open up a command prompt and navigate to your CK3-Conflict-Helper directory<br>
     a. type python3 chm.py "DRIVE:\PATH\TO\WHEREVER\YOU\DUMPED\YOUR\MODLIST"<br>
     b. Press enter and let it run<br>
+    ![Sample Run](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/cmd1.PNG)<br>
 3. When done navigate to the ToMerge folder<br>
-#insert screenshot here<br>
-4. Create a base mod folder to hold your comp patch<br>
-5. Create or copy over the description.mod provided into your comp patch folder<br>
-    b. Modify the name= in description.mod to your comp patch name<br>
-6. Open up WinMerge (or whatever merge tool you're familar with<br>
-    b. If this is your first time, configure WinMerge for easier use, see below<br>
-    c. Select the MyCompPatch folder as your first entry.
-7. <b>For Each Mod Folder in ToMerge, Do the Following:</b><br>
-    b. Set the mod as your second entry.
-    c. Go through each file that shows up as conflicted.
-    d. Delete the folder when you're done
-10. Remove the mod directory you have finished merging <br>
-11. Go back to step 7 if there are more mods to be merged.<br>
-12. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
-13. <b>Overtime Steps</b><br>
+    It should look something like this:<br>
+    ![Sample Output](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output.PNG)<br>
+4. Open up WinMerge (or whatever merge tool you're familar with<br>
+    <b>If this is your first time, configure WinMerge for easier use, see below</b><br>
+    b. Select the MyCompPatch folder as your first entry.<br>
+6. <b>For Each Mod Folder in ToMerge, Do the Following:</b><br>
+    b. Set the mod as your second entry.<br>
+       ![WinMerge Load](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmerge1.PNG)<br>
+    c. Go through each file that shows up as conflicted.<br>
+       ![WinMerge File List](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmerge2.PNG)<br>
+       Merge to the best of your knowledge.<br>
+       ![WinMerge Difference](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmerge3.PNG)<br>
+    d. Delete the current mod folder when you're done.<br>
+    e. Repeat until there are no more mod folders to merge.<br>
+7. Congratulations You're Done, is what I would like to say, but there are technically more things to do. Proceed on if you want.<br>
+8. <b>Overtime Steps</b><br>
     You're also allowed to overwrite fields from outside the file.  Skipping this step wouldn't be the end of the world, these conflicts would continue to behave as before.<br>
     Though some mods will definitely be required for you to handle these conflicts or else you might have unexpected behaviour.<br>
     To handle this you'll need to make a file and with the overwrites and have it loaded last to overwrite their overwrites.<br><br>
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
+9. Go through each file, open up the relevant files and do a manual compare and choose who/which entires should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
-    Optionally now you can remove the none native file.<br>
+    Optionally now you can remove the files involved in this.<br>
     Tip: <i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
-17. Repeat until you're done or get bored.<br>
-18. <b>Extra Overtime</b><br>
+10. Repeat until you're done or get bored.<br>
+11. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
