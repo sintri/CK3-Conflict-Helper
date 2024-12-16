@@ -398,10 +398,6 @@ def main():
         file.write("Group Count: "+str(len(manualMergeRequiredListByFile))+"\n")
         for fileList  in manualMergeRequiredListByFile:
             # Parse Mod Name
-            #baseModFolder = fileList[0].replace(rootDir, '')
-            #modFolderName = baseModFolder.split("\\")[1]
-            #if sum((file.count(modFolderName) for file in fileList)) == len(fileList):
-                #continue
             file.write("{\n")
             dupCheck = []
             for fileName in fileList:
