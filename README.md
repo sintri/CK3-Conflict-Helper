@@ -46,10 +46,21 @@ If you answered yes to all of the above hopefully this tool can make life easier
 15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
     Optionally now you can remove the none native file.<br>
+    Tip: <i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
 17. Repeat until you're done or get bored.<br>
 18. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
+
 ## Configuring WinMerge
-#insert screenshot here<br>
+Click <b>View</b>. Ensure settings are set to these, only showing different items will cut down on the clutter and reduce compares.<br>
+![Click View](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec0.PNG)<br>
+Click <b>Edit->Options</b><br>
+Click on the <b>Compare</b> tab<br>
+Ensure settings are like this. Ignore White spaces cuts down on the comparisons needed. Under <b>Diff algorithm</b>, <b>histogram</b> is generally the most useful for our purposes, though some may be better than others depending on the situation.<br>
+![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec1.PNG)<br>
+Click on the <b>Folder</b> tab<br>
+Under <b>Automatically expanded subfolders after comparison</b>: click <b>Expand all subfolders</b>.
+![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec2.PNG)<br>
+Click <b>OK</b> to finish.
