@@ -36,7 +36,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
        Merge to the best of your knowledge.<br>
        ![WinMerge Difference](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmerge3.PNG)<br>
     d. Delete the current mod folder when you're done.<br>
-    e. Repeat until there are no more mod folders to merge.<b>
+    e. Repeat until there are no more mod folders to merge.<br>
 7. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
 8. <b>Overtime Steps</b><br>
     You're also allowed to overwrite fields from outside the file.  Skipping this step wouldn't be the end of the world, these conflicts would continue to behave as before.<br>
