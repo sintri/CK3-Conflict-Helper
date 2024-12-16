@@ -36,22 +36,21 @@ If you answered yes to all of the above hopefully this tool can make life easier
        Merge to the best of your knowledge.<br>
        ![WinMerge Difference](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmerge3.PNG)<br>
     d. Delete the current mod folder when you're done.<br>
-8. Remove the mod directory you have finished merging <br>
-9. Go back to step 7 if there are more mods to be merged.<br>
-10. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
-11. <b>Overtime Steps</b><br>
+    e. Repeat until there are no more mod folders to merge.<b>
+7. Congradulations You're Done, is what I would like to say.  But there are technically more things to do, proceed to step 13 if you want.<br>
+8. <b>Overtime Steps</b><br>
     You're also allowed to overwrite fields from outside the file.  Skipping this step wouldn't be the end of the world, these conflicts would continue to behave as before.<br>
     Though some mods will definitely be required for you to handle these conflicts or else you might have unexpected behaviour.<br>
     To handle this you'll need to make a file and with the overwrites and have it loaded last to overwrite their overwrites.<br><br>
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
-12. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
+9. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
     Optionally now you can remove the none native file.<br>
     Tip: <i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
-13. Repeat until you're done or get bored.<br>
-14. <b>Extra Overtime</b><br>
+10. Repeat until you're done or get bored.<br>
+11. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
