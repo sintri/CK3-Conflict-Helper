@@ -41,6 +41,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
 8. <b>Overtime Steps</b><br>
     You're also allowed to overwrite fields from outside the file.  Skipping this step wouldn't be the end of the world, these conflicts would continue to behave as before.<br>
     Though some mods will definitely be required for you to handle these conflicts or else you might have unexpected behaviour.<br>
+    <b>Manual Patching should be done if a file you don't want winning is overwriting a mod you do want winning by virtue of file name load order.</b><br>
     To handle this you'll need to make a file and with the overwrites and have it loaded last to overwrite their overwrites.<br><br>
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
