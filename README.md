@@ -61,3 +61,4 @@ Ensure settings are like this. Ignore White spaces cuts down on the comparisons 
 Click on the <b>Folder</b> tab<br>
 Under <b>Automatically expanded subfolders after comparison</b>: click <b>Expand all subfolders</b>.
 ![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec2.PNG)<br>
+Click <b>OK</b> to finish.
