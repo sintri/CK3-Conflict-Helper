@@ -44,11 +44,11 @@ If you answered yes to all of the above hopefully this tool can make life easier
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare<br>
 15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
-    Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt
-    Optionally now you can remove the none native file.
-17. Repeat until you're done or get bored.
+    Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
+    Optionally now you can remove the none native file.<br>
+17. Repeat until you're done or get bored.<br>
 18. <b>Extra Overtime</b><br>
-    This tool does not handle GUI files at the moment, those you'll need to merge on your own.
+    This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
 ## Configuring WinMerge
