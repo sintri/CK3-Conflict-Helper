@@ -4,7 +4,9 @@ Do you hvae more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br>
-<b>Also make sure you know what you're doing, if you don't you'll be wasting alot of time and making things worse.</b><br>
+<b>Also make sure you know what you're doing, if you don't you'll be wasting alot of time and making things worse.<br>
+Remember the point is not to merge every file together, it is to resolve object confclits. If objects in a file are naturally going to be overwritten, then a comp patch is not needed.  If the file you want to win has a seperate mod overwriting it by nature of file name ordering, then you'll need to create a comp patch.
+</b>
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
