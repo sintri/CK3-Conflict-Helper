@@ -1,5 +1,5 @@
 # CK3-Conflict-Helper
-<b>WIP Should be relatively stable now but use at your own risk<b><br>
+<b>WIP Should be relatively stable now but use at your own risk</b><br>
 Do you hvae more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
