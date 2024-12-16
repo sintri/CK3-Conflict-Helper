@@ -1,9 +1,9 @@
 # CK3-Conflict-Helper
-    <b>WIP Should be relatively stable now but use at your own risk</b>
-    Do you hvae more mods than off the shelf compatibility patches can support?
-    Do you want to make sure you're catching all possible conflicts?
-    Do you know what you're doing?
-    If you answered yes to all of the above hopefully this tool can make life easier.
+<b>WIP Should be relatively stable now but use at your own risk</b><br>
+Do you hvae more mods than off the shelf compatibility patches can support?<br>
+Do you want to make sure you're catching all possible conflicts?<br>
+Do you know what you're doing?<br>
+If you answered yes to all of the above hopefully this tool can make life easier.<br>
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
@@ -26,7 +26,7 @@
         It should look something like this:
         ![Sample Output](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output.PNG)
     4. Open up WinMerge (or whatever merge tool you're familar with
-        <b>If this is your first time, configure WinMerge for easier use, see below</b>
+        <b>**If this is your first time, configure WinMerge for easier use, see below**</b>
         b. Select the MyCompPatch folder as your first entry.
     6. <b>For Each Mod Folder in ToMerge, Do the Following:</b>
         b. Set the mod as your second entry.
