@@ -351,10 +351,10 @@ def main():
     if setupForMerging:
         # Create Mod Description File
         file = open(setupMergeFolderPath+'\\descriptor.mod', 'w', encoding='utf-8-sig')
-        file.write("version=\"1.0.0\"")
-        file.write("tags={")
-        file.write("}")
-        file.write("name=\""+setupMergeFolderName+"\"")
+        file.write("version=\"1.0.0\"\n")
+        file.write("tags={\n")
+        file.write("}\n")
+        file.write("name=\""+setupMergeFolderName+"\"\n")
         file.write("supported_version=\"1.14.*\"")
         file.close()
         # Create Merging Conflict Info File
