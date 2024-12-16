@@ -5,6 +5,7 @@ Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br>
 ## Outputs
+    MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
     Conflict Output.txt - List of files that contain overwrites to other fields grouped by field<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
