@@ -46,7 +46,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
 15. More or less go through each file, open up the relevant files and do a manual compare and choose who should win.<br>
     Afterwards save that file under some ridiculous name so it gets loaded last. ie. zzz_basefilename.txt<br>
     Optionally now you can remove the none native file.<br>
-    <i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
+    Tip:<i>I would go through folder by folder, double check the file name in Conflict Output.txt, and used Manual Merge Conflcit Output by File.txt as a checklist to remove the group when you're done.</i><br>
 17. Repeat until you're done or get bored.<br>
 18. <b>Extra Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
