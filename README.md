@@ -53,11 +53,11 @@ If you answered yes to all of the above hopefully this tool can make life easier
 
 ## Configuring WinMerge
 Click <b>View</b>. Ensure settings are set to these, only showing different items will cut down on the clutter and reduce compares.<br>
-![Click View]([http://url/to/img.png](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec0.PNG))
+![Click View](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec0.PNG)
 Click <b>Edit->Options</b><br>
 Click on the <b>Compare</b> tab<br>
 Ensure settings are like this. Ignore White spaces cuts down on the comparisons needed. Under <b>Diff algorithm</b>, <b>histogram</b> is generally the most useful for our purposes, though some may be better than others depending on the situation.<br>
-![Click Edit]([http://url/to/img.png](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec1.PNG))
+![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec1.PNG)
 Click on the <b>Folder</b> tab<br>
 Under <b>Automatically expanded subfolders after comparison</b>: click <b>Expand all subfolders</b>.
-![Click Edit]([http://url/to/img.png](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec2.PNG))
+![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec2.PNG)
