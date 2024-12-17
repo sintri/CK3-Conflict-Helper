@@ -1,9 +1,23 @@
 # CK3-Conflict-Helper
-<b>WIP Should be relatively stable now but use at your own risk</b><br>
+<b>WIP Should be relatively stable now.<br>
+Variables below #Configurable Variables are designed to be modified.<br>
+The program does clear files under outputFolder so be careful where you point it if you change it.</b><br>
 Do you hvae more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
-If you answered yes to all of the above hopefully this tool can make life easier.<br>
+If you answered yes to all of the above hopefully this tool can make life easier.<br><br>
+<b>Also make sure you know what you're doing, if you don't you'll be wasting alot of time and making things worse.<br></b>
+<i>Remember the point is not to merge every file together, it is to resolve object confclits. If objects in a file are naturally going to be overwritten, then a comp patch is not needed for those files.  If the object you want to win has a seperate mod file overwriting it by nature of file name ordering, then you'll need to create a comp patch.</i>
+## Description
+What this script does do:<br>
+- Prepares folders and files for you to make a comp patch out of any modlist
+- Points out conflicts with multiple groupings
+- Points out pontential issues or redundancies in a mod
+
+What this script doesn't do:<br>
+- Resolve conflicts for you
+- Guarantee you merged it correctly
+- Catch every single conflict, it might be close though
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
@@ -12,9 +26,9 @@ If you answered yes to all of the above hopefully this tool can make life easier
     Manual Merge Conflict Output By File.txt - Grouped by file name, this is the one I would use to do file-file compare
     Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file
 ## Requirements
-    -CK3 Mods<br>
-    -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)<br>
-    -WinMerge (or whate ever compare tool you want)<br>
+    -CK3 Mods
+    -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)
+    -WinMerge (or whate ever compare tool you want)
 
 ## Instructions
 1. Stick all the mods from your modlist into a directory<br>
@@ -41,6 +55,7 @@ If you answered yes to all of the above hopefully this tool can make life easier
 8. <b>Overtime Steps</b><br>
     You're also allowed to overwrite fields from outside the file.  Skipping this step wouldn't be the end of the world, these conflicts would continue to behave as before.<br>
     Though some mods will definitely be required for you to handle these conflicts or else you might have unexpected behaviour.<br>
+    <b>Manual Patching should be done if a file you don't want winning is overwriting a mod you do want winning by virtue of file name load order.</b><br>
     To handle this you'll need to make a file and with the overwrites and have it loaded last to overwrite their overwrites.<br><br>
     A list of these fields have been provided to you in two files, one grouped by the field name the other grouped by the file grouping.<br>
     Manual Merge Conflict Output.txt - Grouped by conflicting field name<br>
@@ -60,7 +75,7 @@ Click <b>View</b>. Ensure settings are set to these, only showing different item
 ![Click View](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec0.PNG)<br>
 Click <b>Edit->Options</b><br>
 Click on the <b>Compare</b> tab<br>
-Ensure settings are like this. Ignore White spaces cuts down on the comparisons needed. Under <b>Diff algorithm</b>, <b>histogram</b> is generally the most useful for our purposes, though some may be better than others depending on the situation.<br>
+Ensure settings are like this. Ignore White spaces cuts down on the comparisons needed. Under <b>Diff algorithm</b>, <b>patience</b> is generally the most useful for our purposes, though some may be better than others depending on the situation.<br>
 ![Click Edit](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/winmergec1.PNG)<br>
 Click on the <b>Folder</b> tab<br>
 Under <b>Automatically expanded subfolders after comparison</b>: click <b>Expand all subfolders</b>.
