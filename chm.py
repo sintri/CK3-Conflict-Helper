@@ -31,6 +31,7 @@ ignoreFolders = [
     "common\\dynasties", 
     "common\\ethnicities", 
     "common\\on_action", # On actions append, other things overwrite, generally ok but remove if you need to check
+    #"common\\scripted_values", # Script is not set up to handle individual defines, it will still detect object overrides so should be commented out
     "gfx\\coat_of_arms\\colored_emblems", 
     "gfx\\court_scene\\scene_settings", # Keyed by name per file, shouldn't have conflicts™
     "history\\characters",
@@ -44,7 +45,8 @@ variableSpecialBraceCount = {
     "age_presets": 2,
     "morph_genes": 2,
     "accessory_genes": 2,
-    "colors": 2
+    "colors": 2,
+    "doctrine_core_tenets": 2, # Pretty sure this appoends
 }
 # For fields that are keyed based on another id field
 variableSpecialUniqueCheck = {
@@ -62,7 +64,8 @@ variableSpecialUniqueCheck = {
     "widget": "name",
     "window": "name",
     "texticon": "icon",
-    "vbox": "name"
+    "vbox": "name",
+    "game_object_locator": "name"
 }
 
 #=== DO NOT TOUCH BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING ===#
