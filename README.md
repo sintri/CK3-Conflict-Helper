@@ -2,7 +2,7 @@
 <b>WIP Should be relatively stable now.<br>
 Variables below #Configurable Variables are designed to be modified.<br>
 The program does clear files under outputFolder so be careful where you point it if you change it.</b><br>
-Do you hvae more mods than off the shelf compatibility patches can support?<br>
+Do you have more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br><br>
