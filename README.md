@@ -1,5 +1,5 @@
 # CK3-Conflict-Helper
-<b>WIP Should be relatively stable now.<br>
+<b>WIP Should be relatively stable now, though reworking the merge functions<br>
 Variables below #Configurable Variables are designed to be modified.<br>
 The program does clear files under outputFolder so be careful where you point it if you change it.</b><br>
 Do you have more mods than off the shelf compatibility patches can support?<br>
