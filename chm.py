@@ -262,16 +262,16 @@ def main():
         makePath = Path(setupMergeFolderPath)
         makePath.mkdir(parents=True, exist_ok=True)
         # Clear Merge Folder
-        for fileName in os.listdir(outputFolder):
-            file_path = os.path.join(outputFolder, fileName)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e))
-    file = open(outputFolder+'\\Conflict Output.txt', 'w', encoding='utf-8-sig')
+        #for fileName in os.listdir(outputFolder):
+            #file_path = os.path.join(outputFolder, fileName)
+            #try:
+                #if os.path.isfile(file_path) or os.path.islink(file_path):
+                    #os.unlink(file_path)
+                #elif os.path.isdir(file_path):
+                    #shutil.rmtree(file_path)
+            #except Exception as e:
+                #print('Failed to delete %s. Reason: %s' % (file_path, e))
+    file = open(setupMergeFolderPath+'\\Conflict Output.txt', 'w', encoding='utf-8-sig')
     prevRelPath = ""
     curRelPath = ""
     prevFile = ""
@@ -343,7 +343,7 @@ def main():
     # Probable Errors Within the Mod Itself
     print("-Outputting Potential Mod Issues")
     pbar = tqdm(total=issuesListTotalCount)
-    file = open(outputFolder+'\\Potential Mod Issues Output.txt', 'w', encoding='utf-8-sig')
+    file = open(setupMergeFolderPath+'\\Potential Mod Issues Output.txt', 'w', encoding='utf-8-sig')
     prevRelPath = ""
     curRelPath = ""
     if len(malformedOpeningFileList):
