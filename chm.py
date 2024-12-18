@@ -241,7 +241,7 @@ def main():
                     makeModFolder = setupMergeFolderPath+"\\"+makeModFolder[:makeModFolder.rfind("\\")]
                     makePath = Path(makeModFolder)
                     makePath.mkdir(parents=True, exist_ok=True)
-                    makeFile = baseModFolder.split("\\",1)[0]+"_"+baseModFolder[baseModFolder.rfind("\\")+1:]
+                    makeFile = baseModFolder.split("\\",1)[0]+" "+baseModFolder[baseModFolder.rfind("\\")+1:]
                     file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
                     file.write(writeOut[1]+"\n")
                     file.close()
