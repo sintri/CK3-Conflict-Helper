@@ -152,7 +152,7 @@ def main():
                 braceCountNeeded = 1
                 lineCount = 0
                 variableName = ""
-                objectKey = ""
+                objectKeys = []
                 objectString = ""
                 for x in f:
                     lineCount+=1
@@ -165,7 +165,7 @@ def main():
                         continue
                     
                     # Check if index is in this object because we'll likely need to re-index
-                    if "index =" in x:
+                    if "index =" in x and not "texture_index =" in x:
                         if key not in forceInclude:
                             forceInclude.append(key)
                         
@@ -208,7 +208,7 @@ def main():
                     if insertRecord:
                         #print(variableName) # BRACE DEBUG
                         key = variableName+" --- "+relPathMod
-                        objectKey = key.split("->")[0]
+                        objectKeys.append(key)
                         value = os.path.join(dirPath,file)
                         if (not conflictList.get(key)):
                             conflictList[key] = [value]
@@ -225,13 +225,12 @@ def main():
                         braceCount-=result
                         #print("<---close:"+str(braceCount)+x) # BRACE DEBUG
                     if braceCount <= 0:
-                        if objectKey != "":
-                            if (not fileOutputBuffer.get(objectKey)):
-                                fileOutputBuffer[objectKey] = []
-                            fileOutputBuffer.get(objectKey).append([value,objectString])
-                            #print(objectKey)
-                            #print(fileOutputBuffer[objectKey][0])
-                            objectKey = ""
+                        if len(objectKeys) != 0:
+                            for key in objectKeys:
+                                if (not fileOutputBuffer.get(key)):
+                                    fileOutputBuffer[key] = []
+                                fileOutputBuffer.get(key).append([value,objectString])
+                                objectKeys = []
                         braceCountNeeded = 1;
                         if braceCount < 0:
                             braceCount = 0; # Power through
@@ -241,24 +240,14 @@ def main():
                                 
                 if braceCount > 0:
                     malformedOpeningFileList.append(os.path.join(dirPath,file))
-                    
-    for key in conflictList:
-        if len(conflictList[key]) > 1 or key in forceInclude:
-            #print(conflictList[key])
-            if key.split("->")[0] in fileOutputBuffer:
-                for writeOut in fileOutputBuffer[key.split("->")[0]]:
-                    #Parse Mod Name
-                    baseModFolder = writeOut[0].replace(rootDir, '').split("\\",1)[1]
-                    makeModFolder = baseModFolder.split("\\",1)[1]
-                    makeModFolder = setupMergeFolderPath+"\\"+makeModFolder[:makeModFolder.rfind("\\")]
-                    makePath = Path(makeModFolder)
-                    makePath.mkdir(parents=True, exist_ok=True)
-                    makeFile = baseModFolder.split("\\",1)[0]+" "+baseModFolder[baseModFolder.rfind("\\")+1:]
-                    file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
-                    file.write(writeOut[1]+"\n")
-                    file.close()
-                    file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
-                    file.close()
+    pbar.refresh()
+    pbar.close()
+    
+    print("Creating Merge Files")
+    # Output Conflicts
+    # Create Merge Mod Base Folder
+    makePath = Path(setupMergeFolderPath)
+    makePath.mkdir(parents=True, exist_ok=True)
     #Create Mod Description File
     file = open(setupMergeFolderPath+'\\descriptor.mod', 'w', encoding='utf-8-sig')
     file.write("version=\"1.0.0\"\n")
@@ -267,18 +256,38 @@ def main():
     file.write("name=\""+setupMergeFolderName+"\"\n")
     file.write("supported_version=\"1.14.*\"")
     file.close()
-                        
+    pbar = tqdm(total=len(conflictList))
+    # Create Merge Files
+    print("-Merge Files")
+    for key in conflictList:
+        pbar.update(1)
+        if len(conflictList[key]) > 1 or key in forceInclude:
+            #print(conflictList[key])
+            if key in fileOutputBuffer:
+                for writeOut in fileOutputBuffer[key]:
+                    #Parse Mod Name
+                    baseModFolder = writeOut[0].replace(rootDir, '').split("\\",1)[1]
+                    makeModFolder = baseModFolder.split("\\",1)[1]
+                    makeModFolder = setupMergeFolderPath+"\\"+makeModFolder[:makeModFolder.rfind("\\")]
+                    makePath = Path(makeModFolder)
+                    makePath.mkdir(parents=True, exist_ok=True)
+                    makeFile = baseModFolder.split("\\",1)[0]+" "+baseModFolder[baseModFolder.rfind("\\")+1:]
+                    if os.path.isfile(makeModFolder+"\\"+makeFile):
+                        with open(makeModFolder+"\\"+makeFile, encoding='utf-8-sig') as fileCheck:
+                            if writeOut[1] in fileCheck.read():
+                                continue
+                    file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
+                    file.write(writeOut[1]+"\n")
+                    file.close()
+                    file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
+                    file.close()
     pbar.refresh()
     pbar.close()
-    
 
     print("Creating Outputs Files")
     # Output Conflicts
     print("-Outputting Mod Conflicts")
     pbar = tqdm(total=len(conflictList))
-    # Create Merge Mod Base Folder In Case for some reason it didn't get created earlier
-    makePath = Path(setupMergeFolderPath)
-    makePath.mkdir(parents=True, exist_ok=True)
     file = open(setupMergeFolderPath+'\\Conflict Output.txt', 'w', encoding='utf-8-sig')
     prevRelPath = ""
     curRelPath = ""
