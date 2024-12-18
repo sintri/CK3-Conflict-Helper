@@ -32,9 +32,8 @@ What this script doesn't do:<br>
     a. type python3 chm.py "DRIVE:\PATH\TO\WHEREVER\YOU\DUMPED\YOUR\MODLIST"<br>
     b. Press enter and let it run<br>
     ![Sample Run](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/cmd1.PNG)<br>
-3. When done navigate to the ToMerge folder<br>
-    It should look something like this:<br>
-    ![Sample Output](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output.PNG)<br>
+3. When done navigate to the MyCompPatch folder<br>
+    TODO: re-add screen
 4. Open up WinMerge (or whatever merge tool you're familar with<br>
     <b>If this is your first time, configure WinMerge for easier use, see below</b><br>
 5. <b>For Each Mod Folder in ToMerge, merge all files into the preallocated zzzzz_foldername.txt</b><br>
