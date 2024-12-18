@@ -72,12 +72,10 @@ variableSpecialUniqueCheck = {
 # Declarations
 conflictList = {}
 issuesList = {}
-manualMergeRequiredList = {}
-manualMergeRequiredListByFile = []
+forceInclude = []
 malformedOpeningFileList = []
 malformedClosingFileList = []
 finalFileList = []
-finalManualFileList = []
 modInfo = {}
 patternComment = re.compile("^\s*#.*")
 patternOpen = re.compile(r"\s*=\s*{")
@@ -130,6 +128,9 @@ def main():
             # Skip .git
             if os.path.relpath(dirPath, rootDir).replace(baseDir+"\\",'') == ".git":
                 continue
+            # Skip src, who's including this anyways
+            if os.path.relpath(dirPath, rootDir).replace(baseDir+"\\",'') == "src":
+                continue
         for file in files:
             recordedFile = False
             pbar.update(1)
@@ -157,10 +158,17 @@ def main():
                     lineCount+=1
                     insertRecord = False
                     objectString += x
+                    
                     # Check and Skip Commented Out Lines
                     commentFlag = re.search(patternComment, x)
                     if (commentFlag):
                         continue
+                    
+                    # Check if index is in this object because we'll likely need to re-index
+                    if "index =" in x:
+                        if key not in forceInclude:
+                            forceInclude.append(key)
+                        
                     # Check for Brace Start
                     result = getTotalCount("{",x) # Cause some people can't be trusted with proper formatting
                     if result:
@@ -188,12 +196,14 @@ def main():
                         result = getTotalCount("=",x)
                         if result:
                             variableName = x[:re.search(patternSet,x).start()].lstrip()
+                            
                     # Check for Special Cases
                     if variableName in variableSpecialUniqueCheck:
                         if variableSpecialUniqueCheck[variableName] in x:
                             appendVar = x.split("=")
                             variableName += " - "+appendVar[1].replace("\"","").strip()
                             insertRecord = True
+                            
                     # Check if we need to insert recrod
                     if insertRecord:
                         #print(variableName) # BRACE DEBUG
@@ -208,6 +218,7 @@ def main():
                                 conflictList.get(key).append(value)
                             else:
                                 issuesList.get(key).append(value)
+                                
                     # Check for brace end
                     result = getTotalCount("}",x) # Cause some people can't be trusted with proper formatting
                     if result:
@@ -227,11 +238,12 @@ def main():
                             if not recordedFile:
                                 malformedClosingFileList.append(os.path.join(dirPath,file))
                                 recordedFile = True
+                                
                 if braceCount > 0:
                     malformedOpeningFileList.append(os.path.join(dirPath,file))
                     
     for key in conflictList:
-        if len(conflictList[key]) > 1:
+        if len(conflictList[key]) > 1 or key in forceInclude:
             #print(conflictList[key])
             if key.split("->")[0] in fileOutputBuffer:
                 for writeOut in fileOutputBuffer[key.split("->")[0]]:
@@ -274,7 +286,6 @@ def main():
     issuesListTotalCount = 0
     for key in conflictList:
         pbar.update(1)
-        requireManualChecks = False
         prevFile = ""
         # Do issuesList count here for prgoress bar later
         if len(issuesList[key]) > 1:
@@ -301,8 +312,6 @@ def main():
                 if fileName not in finalFileList:
                     finalFileList.append(fileName)
             file.write("\n")
-            if requireManualChecks:
-                manualMergeRequiredList[key] = conflictList[key]
     file.write("}\n")
     # Print Conflict Count
     file.write("Total conflict file count: "+str(len(finalFileList))+"\n")
