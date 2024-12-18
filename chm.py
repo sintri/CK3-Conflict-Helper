@@ -117,12 +117,11 @@ def main():
     print("Processing "+str(totalFileCount)+" Files")
     pbar = tqdm(total=totalFileCount)
     fileOutputBuffer = {}
-    if setupForMerging:
-        if os.path.exists(setupMergeFolderPath):
-            pbar.close()
-            print("\nPrexisting Merge folder detected, please move or delete old merge folder "+setupMergeFolderPath+"\n")
-            print("This is in case you accidently overwrite a working copy\n")
-            exit()
+    if os.path.exists(setupMergeFolderPath):
+        pbar.close()
+        print("\nPrexisting Merge folder detected, please move or delete old merge folder "+setupMergeFolderPath+"\n")
+        print("This is to prevent accidently overwrite a working copy\n")
+        exit()
     
     for dirPath, subdirs, files in os.walk(rootDir):
         if dirPath[len(rootDir):].count(os.sep) == 1:
@@ -248,6 +247,14 @@ def main():
                     file.close()
                     file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
                     file.close()
+    #Create Mod Description File
+    file = open(setupMergeFolderPath+'\\descriptor.mod', 'w', encoding='utf-8-sig')
+    file.write("version=\"1.0.0\"\n")
+    file.write("tags={\n")
+    file.write("}\n")
+    file.write("name=\""+setupMergeFolderName+"\"\n")
+    file.write("supported_version=\"1.14.*\"")
+    file.close()
                         
     pbar.refresh()
     pbar.close()
@@ -257,20 +264,9 @@ def main():
     # Output Conflicts
     print("-Outputting Mod Conflicts")
     pbar = tqdm(total=len(conflictList))
-    if setupForMerging:
-        # Create Merge Mod Base Folder In Case for some reason it didn't get created earlier
-        makePath = Path(setupMergeFolderPath)
-        makePath.mkdir(parents=True, exist_ok=True)
-        # Clear Merge Folder
-        #for fileName in os.listdir(outputFolder):
-            #file_path = os.path.join(outputFolder, fileName)
-            #try:
-                #if os.path.isfile(file_path) or os.path.islink(file_path):
-                    #os.unlink(file_path)
-                #elif os.path.isdir(file_path):
-                    #shutil.rmtree(file_path)
-            #except Exception as e:
-                #print('Failed to delete %s. Reason: %s' % (file_path, e))
+    # Create Merge Mod Base Folder In Case for some reason it didn't get created earlier
+    makePath = Path(setupMergeFolderPath)
+    makePath.mkdir(parents=True, exist_ok=True)
     file = open(setupMergeFolderPath+'\\Conflict Output.txt', 'w', encoding='utf-8-sig')
     prevRelPath = ""
     curRelPath = ""
@@ -300,28 +296,6 @@ def main():
                 baseModFolder = fileName.replace(rootDir, '')
                 modFolderName = baseModFolder.split("\\")[1]
                 file.write("  └ "+modInfo[modFolderName])
-                #if setupForMerging and not (sum((file.count(modFolderName) for file in conflictList[key])) == len(conflictList[key])):
-                    # Second Part of the logic ignores files if the conflicted object all came from the same mod since hopefully they knew
-                    # what they were doing when they made the mod
-                    # Create Merge Directory
-                    #sanitizedModName = sanitizeFolderName(modInfo[modFolderName].strip())
-                    #modFilePath = outputFolder+baseModFolder.replace(modFolderName,sanitizedModName) # Mod to compare
-                    #mergeModPath = setupMergeFolderPath+baseModFolder.replace(modFolderName,"") # Mod to merge into
-                    #baseModFolder = modFilePath[:modFilePath.rfind("\\")].replace("|","") # Mod to compare
-                    #mergeModPath = mergeModPath[:mergeModPath.rfind("\\")].replace("|","") # Mod to merge into
-                    #makePath = Path(baseModFolder)
-                    #makePath.mkdir(parents=True, exist_ok=True)
-                    #checkExists = Path(modFilePath)
-                    #if prevFile == "":
-                        #prevFile = fileName[fileName.rfind("\\"):]
-                    #if prevFile != fileName[fileName.rfind("\\"):]:
-                        #requireManualChecks = True
-                        #prevFile = fileName[fileName.rfind("\\"):]
-                    #if not checkExists.is_file():
-                        #shutil.copy(fileName, baseModFolder)
-                        #makePath = Path(mergeModPath)
-                        #makePath.mkdir(parents=True, exist_ok=True)
-                        #shutil.copy(fileName, mergeModPath)
                 # Output Mod Path
                 file.write("  "+fileName+"\n")
                 if fileName not in finalFileList:
@@ -385,72 +359,6 @@ def main():
     pbar.refresh()
     pbar.close()
     
-    #if setupForMerging:
-        ## Create Mod Description File
-        #file = open(setupMergeFolderPath+'\\descriptor.mod', 'w', encoding='utf-8-sig')
-        #file.write("version=\"1.0.0\"\n")
-        #file.write("tags={\n")
-        #file.write("}\n")
-        #file.write("name=\""+setupMergeFolderName+"\"\n")
-        #file.write("supported_version=\"1.14.*\"")
-        #file.close()
-        ## Create Merging Conflict Info File
-        #print("-Outputting Files That May Require Manual Merging")
-        #pbar = tqdm(total=len(manualMergeRequiredList))
-        #file = open(outputFolder+'\\Manual Merge Conflict Output.txt', 'w', encoding='utf-8-sig')
-        #file.write("These files may require manual merging and patching.\n")
-        #file.write("Field Count: "+str(len(manualMergeRequiredList))+"\n")
-        #for key in manualMergeRequiredList:
-            #pbar.update(1)
-            #listIndex = -1
-            ## Print out conflict
-            #file.write("  "+key+"\n")
-            #for fileName in manualMergeRequiredList[key]:
-                ## Create File Groupings here for use later.
-                #if listIndex == -1:
-                    #for idx, fileList in enumerate(manualMergeRequiredListByFile):
-                        #if fileName in fileList:
-                            #listIndex = idx
-                #else:
-                    #if fileName not in manualMergeRequiredListByFile[listIndex]:
-                        #manualMergeRequiredListByFile[listIndex].append(fileName)
-                #if listIndex == -1:
-                    #manualMergeRequiredListByFile.append([fileName])
-                    #listIndex = len(manualMergeRequiredListByFile)-1
-                ## Parse Mod Name
-                #baseModFolder = fileName.replace(rootDir, '')
-                #modFolderName = baseModFolder.split("\\")[1]
-                #file.write("  └ "+modInfo[modFolderName])
-                ## Output Mod Path
-                #file.write("  "+fileName+"\n")
-            #file.write("\n")
-            #if fileName not in finalManualFileList:
-                #finalManualFileList.append(fileName)
-        #file.write("\nFile List "+str(len(finalManualFileList))+"\n")
-        #file.close()
-        
-        ## Manual Conflicts Grouped by File
-        #file = open(outputFolder+'\\Manual Merge Conflict Output By File.txt', 'w', encoding='utf-8-sig')
-        #file.write("These files may require manual merging and patching.\n")
-        #file.write("Group Count: "+str(len(manualMergeRequiredListByFile))+"\n")
-        #for fileList  in manualMergeRequiredListByFile:
-            ## Parse Mod Name
-            #file.write("{\n")
-            #dupCheck = []
-            #for fileName in fileList:
-                #baseModFolder = fileName.replace(rootDir,'')
-                #modFolderName = baseModFolder.split("\\")[1]
-                #modFilePath = baseModFolder.replace(modFolderName,setupMergeFolderPath)
-                #modFilePath = modFilePath.replace("\\.\\","")
-                #if modFilePath not in dupCheck:
-                    #file.write("  "+modFilePath+"\n")
-                    #dupCheck.append(modFilePath)
-            #file.write("}\n")
-        #file.close()
-        
-        #pbar.refresh()
-        #pbar.close()
-        
     print("Done.")
 
 if __name__ == '__main__':
