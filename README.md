@@ -1,6 +1,6 @@
 # CK3-Conflict-Helper
 <b>WIP Should be relatively stable now, rework done should make the process far easier<br>
-Variables below #Configurable Variables are designed to be modified.<br>
+Variables below #Configurable Variables are designed to be modified.<br></b>
 Do you have more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
