@@ -1,13 +1,11 @@
 # CK3-Conflict-Helper
 <b>WIP Should be relatively stable now, rework done should make the process far easier<br>
 Variables below #Configurable Variables are designed to be modified.<br>
-The program does clear files under outputFolder so be careful where you point it if you change it.</b><br>
 Do you have more mods than off the shelf compatibility patches can support?<br>
 Do you want to make sure you're catching all possible conflicts?<br>
 Do you know what you're doing?<br>
 If you answered yes to all of the above hopefully this tool can make life easier.<br><br>
 <b>Also make sure you know what you're doing, if you don't you'll be wasting alot of time and making things worse.<br></b>
-<i>Remember the point is not to merge every file together, it is to resolve object confclits. If objects in a file are naturally going to be overwritten, then a comp patch is not needed for those files.  If the object you want to win has a seperate mod file overwriting it by nature of file name ordering, then you'll need to create a comp patch.</i>
 ## Description
 What this script does do:<br>
 - Prepares folders and files for you to make a comp patch out of any modlist
@@ -39,13 +37,13 @@ What this script doesn't do:<br>
     ![Sample Output](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output.PNG)<br>
 4. Open up WinMerge (or whatever merge tool you're familar with<br>
     <b>If this is your first time, configure WinMerge for easier use, see below</b><br>
-6. <b>For Each Mod Folder in ToMerge, merge all files into the preallocated zzzzz_foldername.txt</b><br>
+5. <b>For Each Mod Folder in ToMerge, merge all files into the preallocated zzzzz_foldername.txt</b><br>
     Note there may be some cases where it's prudent to create multiple files.<br>
     Consult the Conflict Output.txt if you need help with which fields are being overwritten by which mods.<br>
     TBD re-add some new screens.<br>
     a. Delete the current mod folder when you're done.<br>
     b. Repeat until there are no more mod folders to merge.<br>
-7. <b>Overtime</b><br>
+6. <b>Overtime</b><br>
     This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
