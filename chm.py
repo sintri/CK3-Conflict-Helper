@@ -40,7 +40,7 @@ ignoreFolders = [
     "history\\provinces",
 ]
 # For things are actually unique depending on which depth is being set
-variableSpecialBraceCount = {
+variableSpecialobjectDepth = {
     "special_genes": 3,
     "age_presets": 2,
     "morph_genes": 2,
@@ -148,8 +148,8 @@ def main():
             # TXT File: Parse for Conflicts, can't do GUIs without more robust parsing
             if file.endswith(".txt"):
                 f = open(os.path.join(dirPath,file), "r",encoding='utf-8-sig', errors='ignore')
-                braceCount = 0
-                braceCountNeeded = 1
+                objectDepth = 0
+                objectDepthNeeded = 1
                 lineCount = 0
                 variableName = ""
                 objectKeys = []
@@ -164,30 +164,30 @@ def main():
                     if (commentFlag):
                         continue
                     
-                    # Check if index is in this object because we'll likely need to re-index
-                    if "index =" in x and not "texture_index =" in x:
+                    # Object might not be overwritten but still need re-indexing if occurs at this depth
+                    if objectDepth== 1 and "index =" in x and not "texture_index =" in x:
                         if key not in forceInclude:
                             forceInclude.append(key)
                         
                     # Check for Brace Start
                     result = getTotalCount("{",x) # Cause some people can't be trusted with proper formatting
                     if result:
-                        if braceCount == 0:
+                        if objectDepth == 0:
                             objectString = ""
                             objectString += x
-                        braceCount+=result
-                        #print("--->open:"+str(braceCount)+x) # BRACE DEBUG
-                        if braceCount == 1: # Parent Start
+                        objectDepth+=result
+                        #print("--->open:"+str(objectDepth)+x) # BRACE DEBUG
+                        if objectDepth == 1: # Parent Start
                             if re.search(patternOpen,x):
                                 variableName = x[:re.search(patternOpen,x).start()].lstrip()
-                                if variableName in variableSpecialBraceCount:
+                                if variableName in variableSpecialobjectDepth:
                                     # Special Case, Dive Deeper
-                                    braceCountNeeded = variableSpecialBraceCount[variableName]
+                                    objectDepthNeeded = variableSpecialobjectDepth[variableName]
                             #else: # Shouldn't Happen TM
                                 #print("Shouldn't happen:"+os.path.join(dirPath,file)+":Line:"+str(lineCount))
-                        elif braceCount > 1 and re.search(patternOpen,x):
+                        elif objectDepth > 1 and re.search(patternOpen,x):
                             variableName += "->"+x[:re.search(patternOpen,x).start()].lstrip()
-                        if (braceCount == braceCountNeeded and 
+                        if (objectDepth == objectDepthNeeded and 
                         variableName not in ignoreFields and 
                         variableName not in variableSpecialUniqueCheck):
                             insertRecord = True
@@ -222,23 +222,23 @@ def main():
                     # Check for brace end
                     result = getTotalCount("}",x) # Cause some people can't be trusted with proper formatting
                     if result:
-                        braceCount-=result
-                        #print("<---close:"+str(braceCount)+x) # BRACE DEBUG
-                    if braceCount <= 0:
+                        objectDepth-=result
+                        #print("<---close:"+str(objectDepth)+x) # BRACE DEBUG
+                    if objectDepth <= 0:
                         if len(objectKeys) != 0:
                             for key in objectKeys:
                                 if (not fileOutputBuffer.get(key)):
                                     fileOutputBuffer[key] = []
                                 fileOutputBuffer.get(key).append([value,objectString])
                                 objectKeys = []
-                        braceCountNeeded = 1;
-                        if braceCount < 0:
-                            braceCount = 0; # Power through
+                        objectDepthNeeded = 1;
+                        if objectDepth < 0:
+                            objectDepth = 0; # Power through
                             if not recordedFile:
                                 malformedClosingFileList.append(os.path.join(dirPath,file))
                                 recordedFile = True
                                 
-                if braceCount > 0:
+                if objectDepth > 0:
                     malformedOpeningFileList.append(os.path.join(dirPath,file))
     pbar.refresh()
     pbar.close()
