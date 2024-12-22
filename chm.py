@@ -8,11 +8,10 @@ from pathlib import Path
 import shutil
 
 # Configurable Variables
-setupForMerging = True # If False will only print out output files if you only wanted to know which files are conflicting
 setupMergeFolderPath = "MyCompPatch" # Created Folder Name, Change if you want
 setupMergeFolderName = "My Comptability Mod" # Created Folder Description, Change if you want
-ignoreSameModMerges = True # Don't output to Manual Merge Conflict is conflicts all from same mod, trust mod maker knew what they were doing
 outputFolder = "ToMerge" # This is the output folder, it will also be cleared every time so you shouldn't randomly replace this
+makeEmptyOverwriteFile = True # Creates a empty zzzzz_foldername.txt file for you to merge into
 # For when you really don't care about checking this field
 ignoreFields = []
 # I'm not touching these, generally assume they're fine if you have comp patches since they're alot of work
@@ -30,7 +29,12 @@ ignoreFolders = [
     "common\\defines", # TODO: Script is not set up to handle individual defines so will always list as conflict if in same object, there may be actual conflicting defines though
     "common\\dynasties", 
     "common\\ethnicities", 
+    "common\\men_at_arms_types", # Can probably ignore, typically aren't overwritten
+    "common\\modifier_definition_formats", # Can probably ignore, typically aren't overwritten between mods
+    "common\\modifiers", # Can probably ignore, typically aren't overwritten between mods
+    "common\\named_colors", # If you really care about color define overwrites, remove
     "common\\on_action", # On actions append, other things overwrite, generally ok but remove if you need to check
+    "common\\religion\\religions", #lots of overwrites here, remove if you need to see it
     #"common\\scripted_values", # Script is not set up to handle individual defines, it will still detect object overrides so should be commented out
     "gfx\\coat_of_arms\\colored_emblems", 
     "gfx\\court_scene\\scene_settings", # Keyed by name per file, shouldn't have conflicts™
@@ -145,7 +149,25 @@ def main():
                 for x in f:
                     if "name=" in x:
                         modInfo[baseDir] = x.replace("\"","")[x.index("\""):]
-            # TXT File: Parse for Conflicts, can't do GUIs without more robust parsing
+            # TODO: Properly parse guis, for now just spit out files that are the same name
+            if file.endswith(".gui"):
+                key = file+" --- "+relPathMod
+                value = os.path.join(dirPath,file)
+                if (not conflictList.get(key)):
+                    conflictList[key] = [value]
+                    issuesList[key] = [value]
+                else:
+                    if not value in conflictList.get(key):
+                        conflictList.get(key).append(value)
+                    else:
+                        issuesList.get(key).append(value)
+                if (not fileOutputBuffer.get(key)):
+                    fileOutputBuffer[key] = []
+                objectString = ""
+                for x in f:
+                    objectString += x
+                fileOutputBuffer.get(key).append([value,objectString])
+            # TXT File: Parse for Conflicts
             if file.endswith(".txt"):
                 f = open(os.path.join(dirPath,file), "r",encoding='utf-8-sig', errors='ignore')
                 objectDepth = 0
@@ -243,7 +265,7 @@ def main():
     pbar.refresh()
     pbar.close()
     
-    print("Creating Merge Files")
+    print("Create Merge Files")
     # Output Conflicts
     # Create Merge Mod Base Folder
     makePath = Path(setupMergeFolderPath)
@@ -256,9 +278,9 @@ def main():
     file.write("name=\""+setupMergeFolderName+"\"\n")
     file.write("supported_version=\"1.14.*\"")
     file.close()
-    pbar = tqdm(total=len(conflictList))
     # Create Merge Files
-    print("-Merge Files")
+    print("-Merging Files")
+    pbar = tqdm(total=len(conflictList))
     for key in conflictList:
         pbar.update(1)
         if len(conflictList[key]) > 1 or key in forceInclude:
@@ -279,12 +301,13 @@ def main():
                     file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
                     file.write(writeOut[1]+"\n")
                     file.close()
-                    file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
+                    if makeEmptyOverwriteFile:
+                        file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
                     file.close()
     pbar.refresh()
     pbar.close()
 
-    print("Creating Outputs Files")
+    print("Create Outputs Files")
     # Output Conflicts
     print("-Outputting Mod Conflicts")
     pbar = tqdm(total=len(conflictList))
