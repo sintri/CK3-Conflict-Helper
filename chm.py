@@ -11,7 +11,7 @@ import shutil
 setupMergeFolderPath = "MyCompPatch" # Created Folder Name, Change if you want
 setupMergeFolderName = "My Comptability Mod" # Created Folder Description, Change if you want
 outputFolder = "ToMerge" # This is the output folder, it will also be cleared every time so you shouldn't randomly replace this
-makeEmptyOverwriteFile = True # Creates a empty zzzzz_foldername.txt file for you to merge into
+makeEmptyOverwriteFile = False # Creates a empty zzzzz_foldername.txt file for you to merge into
 # For when you really don't care about checking this field
 ignoreFields = []
 # I'm not touching these, generally assume they're fine if you have comp patches since they're alot of work
