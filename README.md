@@ -11,6 +11,7 @@ What this script does do:<br>
 - Prepares folders and files for you to make a comp patch out of any modlist
 - Points out conflicts by overwrite groupings
 - Points out pontential issues or redundancies in a mod
+
 What this script doesn't do:<br>
 - Resolve conflicts for you
 - Guarantee you merged it correctly
