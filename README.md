@@ -36,14 +36,14 @@ What this script doesn't do:<br>
     TODO: re-add screen
 4. Open up WinMerge (or whatever merge tool you're familar with<br>
     <b>If this is your first time, configure WinMerge for easier use, see below</b><br>
-5. <b>For Each Mod Folder in ToMerge, merge all files into the preallocated zzzzz_foldername.txt</b><br>
-    Note there may be some cases where it's prudent to create multiple files.<br>
-    Consult the Conflict Output.txt if you need help with which fields are being overwritten by which mods.<br>
-    TBD re-add some new screens.<br>
-    a. Delete the current mod folder when you're done.<br>
-    b. Repeat until there are no more mod folders to merge.<br>
+5. <b>For Each Mod File, start with a compatibility patch as a base as that'll be far less work and merge all conflicts</b><br>
+    Consult the Conflict Output.txt if you need help with which fields are being overwritten by which mods as well which mods are which.<br>
+    Also note that some files may not neccessarily require merging (like in the instance of Mod1, Mod2, Mod1 + Mod2 Comp Patch are the only files in conflict) or are the same file contents .<br>
+    For these you can safely remove all files and let load ordering take care of it.<br>
+    TODO: re-add screen.<br>
+    a. Delete the finished mod files when you're done.<br>
+    b. Repeat until you have merged every file in every folder.<br>
 6. <b>Overtime</b><br>
-    This tool does not handle GUI files at the moment, those you'll need to merge on your own.<br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
 
 
