@@ -164,6 +164,7 @@ def main():
                 if (not fileOutputBuffer.get(key)):
                     fileOutputBuffer[key] = []
                 objectString = ""
+                f = open(os.path.join(dirPath,file), "r",encoding='utf-8-sig', errors='ignore')
                 for x in f:
                     objectString += x
                 fileOutputBuffer.get(key).append([value,objectString])
@@ -286,24 +287,40 @@ def main():
         if len(conflictList[key]) > 1 or key in forceInclude:
             #print(conflictList[key])
             if key in fileOutputBuffer:
+                prevMod = ""
+                if key in forceInclude:
+                    outputToFileFlag = True
+                else:
+                    outputToFileFlag = False
+                # Check if conflicts are all from the same mod
                 for writeOut in fileOutputBuffer[key]:
                     #Parse Mod Name
-                    baseModFolder = writeOut[0].replace(rootDir, '').split("\\",1)[1]
-                    makeModFolder = baseModFolder.split("\\",1)[1]
-                    makeModFolder = setupMergeFolderPath+"\\"+makeModFolder[:makeModFolder.rfind("\\")]
-                    makePath = Path(makeModFolder)
-                    makePath.mkdir(parents=True, exist_ok=True)
-                    makeFile = baseModFolder.split("\\",1)[0]+" "+baseModFolder[baseModFolder.rfind("\\")+1:]
-                    if os.path.isfile(makeModFolder+"\\"+makeFile):
-                        with open(makeModFolder+"\\"+makeFile, encoding='utf-8-sig') as fileCheck:
-                            if writeOut[1] in fileCheck.read():
-                                continue
-                    file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
-                    file.write(writeOut[1]+"\n")
-                    file.close()
-                    if makeEmptyOverwriteFile:
-                        file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
-                    file.close()
+                    if prevMod == "":
+                        prevMod = writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]
+                    else:
+                        if prevMod != writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]:
+                            outputToFileFlag = True
+                            break
+                # If conflicts all from same mod, assume the mod maker knew what they were overwriting
+                if outputToFileFlag:
+                    for writeOut in fileOutputBuffer[key]:
+                        #Parse Mod Name
+                        baseModFolder = writeOut[0].replace(rootDir, '').split("\\",1)[1]
+                        makeModFolder = baseModFolder.split("\\",1)[1]
+                        makeModFolder = setupMergeFolderPath+"\\"+makeModFolder[:makeModFolder.rfind("\\")]
+                        makePath = Path(makeModFolder)
+                        makePath.mkdir(parents=True, exist_ok=True)
+                        makeFile = baseModFolder.split("\\",1)[0]+" "+baseModFolder[baseModFolder.rfind("\\")+1:]
+                        if os.path.isfile(makeModFolder+"\\"+makeFile):
+                            with open(makeModFolder+"\\"+makeFile, encoding='utf-8-sig') as fileCheck:
+                                if writeOut[1] in fileCheck.read():
+                                    continue
+                        file = open(makeModFolder+"\\"+makeFile, 'a', encoding='utf-8-sig')
+                        file.write(writeOut[1]+"\n")
+                        file.close()
+                        if makeEmptyOverwriteFile:
+                            file = open(makeModFolder+"\\zzzzz_"+makeModFolder[makeModFolder.rfind("\\")+1:]+".txt", 'w', encoding='utf-8-sig')
+                        file.close()
     pbar.refresh()
     pbar.close()
 
