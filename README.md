@@ -18,7 +18,6 @@ What this script doesn't do:<br>
 
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
-    Mod Folders - Contains files that have conflicts with other mods, grouped by mods
     Conflict Output.txt - List of files that contain overwrites to other fields grouped by field
     Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file
     
