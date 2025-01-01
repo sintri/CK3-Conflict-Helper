@@ -40,7 +40,7 @@ What this script doesn't do:<br>
     Consult the Conflict Output.txt if you need help with which fields are being overwritten by which mods as well which mods are which.<br>
     Also note that some files may not neccessarily require merging (like in the instance of Mod1, Mod2, Mod1 + Mod2 Comp Patch are the only files in conflict) or are the same file contents .<br>
     For these you can safely remove all files and let load ordering take care of it.<br>
-    ![Sample Run](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output1.PNG)<br>
+    ![Sample Run](https://github.com/sintri/CK3-Conflict-Helper/blob/main/HelpFiles/output2.PNG)<br>
     a. Delete the finished mod files when you're done.<br>
     b. Repeat until you have merged every file in every folder.<br>
 6. <b>Overtime</b><br>
