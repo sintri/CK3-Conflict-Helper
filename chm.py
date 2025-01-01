@@ -11,6 +11,8 @@ import shutil
 setupMergeFolderPath = "MyCompPatch" # Created Folder Name, Change if you want
 setupMergeFolderName = "My Comptability Mod" # Created Folder Description, Change if you want
 outputFolder = "ToMerge" # This is the output folder, it will also be cleared every time so you shouldn't randomly replace this
+versionString = "1.0.0"
+supportVersionString = "1.14.*"
 makeEmptyOverwriteFile = False # Creates a empty zzzzz_foldername.txt file for you to merge into
 # For when you really don't care about checking this field
 ignoreFields = []
@@ -273,11 +275,11 @@ def main():
     makePath.mkdir(parents=True, exist_ok=True)
     #Create Mod Description File
     file = open(setupMergeFolderPath+'\\descriptor.mod', 'w', encoding='utf-8-sig')
-    file.write("version=\"1.0.0\"\n")
+    file.write("version=\""+versionString+"\"\n")
     file.write("tags={\n")
     file.write("}\n")
     file.write("name=\""+setupMergeFolderName+"\"\n")
-    file.write("supported_version=\"1.14.*\"")
+    file.write("supported_version=\""+supportVersionString+"\"")
     file.close()
     # Create Merge Files
     print("-Merging Files")
