@@ -9,18 +9,19 @@ If you answered yes to all of the above hopefully this tool can make life easier
 ## Description
 What this script does do:<br>
 - Prepares folders and files for you to make a comp patch out of any modlist
-- Points out conflicts with multiple groupings
+- Points out conflicts by overwrite groupings
 - Points out pontential issues or redundancies in a mod
-
 What this script doesn't do:<br>
 - Resolve conflicts for you
 - Guarantee you merged it correctly
 - Catch every single conflict, it might be close though
+
 ## Outputs
     MyCompPatch - Every detected conflicting file will be placed into this folder along with a descriptor.mod, merge into this to handle basic merge conflicts.
     Mod Folders - Contains files that have conflicts with other mods, grouped by mods
     Conflict Output.txt - List of files that contain overwrites to other fields grouped by field
     Potential Mod Issues Output.txt - Potential duplicates or issues within a mod itself, typically it just means a field has been defined more than once in a file
+    
 ## Requirements
     -CK3 Mods
     -Python3 Latest (there's probably dependencies on stuff added in 3.5+ so use the latest if you have it)
@@ -45,7 +46,6 @@ What this script doesn't do:<br>
     b. Repeat until you have merged every file in every folder.<br>
 6. <b>Overtime</b><br>
     This tool also doesn't no do yaml, but since that doesn't affect gameplay do it on your own if you want.
-
 
 ## Configuring WinMerge
 Click <b>View</b>. Ensure settings are set to these, only showing different items will cut down on the clutter and reduce compares.<br>
