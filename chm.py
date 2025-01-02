@@ -9,8 +9,7 @@ import shutil
 
 # Configurable Variables
 setupMergeFolderPath = "MyCompPatch" # Created Folder Name, Change if you want
-setupMergeFolderName = "My Comptability Mod" # Created Folder Description, Change if you want
-outputFolder = "ToMerge" # This is the output folder, it will also be cleared every time so you shouldn't randomly replace this
+setupMergeModDesc = "My Comptability Mod" # Created Folder Description, Change if you want
 versionString = "1.0.0"
 supportVersionString = "1.14.*"
 makeEmptyOverwriteFile = False # Creates a empty zzzzz_foldername.txt file for you to merge into
@@ -37,7 +36,7 @@ ignoreFolders = [
     "common\\named_colors", # If you really care about color define overwrites, remove
     "common\\on_action", # On actions append, other things overwrite, generally ok but remove if you need to check
     "common\\religion\\religions", #lots of overwrites here, remove if you need to see it
-    #"common\\scripted_values", # Script is not set up to handle individual defines, it will still detect object overrides so should be commented out
+    #"common\\scripted_values", # While script is not set up to handle individual defines it will still detect object overrides so should still check
     "gfx\\coat_of_arms\\colored_emblems", 
     "gfx\\court_scene\\scene_settings", # Keyed by name per file, shouldn't have conflicts™
     "history\\characters",
@@ -86,7 +85,6 @@ modInfo = {}
 patternComment = re.compile("^\s*#.*")
 patternOpen = re.compile(r"\s*=\s*{")
 patternSet = re.compile(r"\s*=")
-outputFolder = ".\\"+outputFolder
 setupMergeFolderPath = ".\\"+setupMergeFolderPath
 
 def sanitizeFolderName(folderName):
@@ -278,7 +276,7 @@ def main():
     file.write("version=\""+versionString+"\"\n")
     file.write("tags={\n")
     file.write("}\n")
-    file.write("name=\""+setupMergeFolderName+"\"\n")
+    file.write("name=\""+setupMergeModDesc+"\"\n")
     file.write("supported_version=\""+supportVersionString+"\"")
     file.close()
     # Create Merge Files
@@ -289,18 +287,26 @@ def main():
         if len(conflictList[key]) > 1 or key in forceInclude:
             #print(conflictList[key])
             if key in fileOutputBuffer:
-                prevMod = ""
+                prevModName = ""
+                prevModContents = ""
                 if key in forceInclude:
                     outputToFileFlag = True
                 else:
                     outputToFileFlag = False
-                # Check if conflicts are all from the same mod
+                # Check if conflicts are all from the same mod or have same contents
                 for writeOut in fileOutputBuffer[key]:
                     #Parse Mod Name
-                    if prevMod == "":
-                        prevMod = writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]
+                    if prevModName == "":
+                        prevModName = writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]
                     else:
-                        if prevMod != writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]:
+                        if prevModName != writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]:
+                            outputToFileFlag = True
+                            break
+                    #Parse Mod Contents
+                    if prevModContents == "":
+                        prevModContents = writeOut[1]
+                    else:
+                        if prevModContents != writeOut[1]:
                             outputToFileFlag = True
                             break
                 # If conflicts all from same mod, assume the mod maker knew what they were overwriting
