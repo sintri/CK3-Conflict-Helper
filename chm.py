@@ -34,7 +34,7 @@ ignoreFolders = [
     "common\\modifier_definition_formats", # Can probably ignore, typically aren't overwritten between mods
     "common\\modifiers", # Can probably ignore, typically aren't overwritten between mods
     "common\\named_colors", # If you really care about color define overwrites, remove
-    "common\\on_action", # On actions append, other things overwrite, generally ok but remove if you need to check
+    #"common\\on_action", # This appends, but also some mod overwriting the vanilla so delete this folder if you sure you're good
     "common\\religion\\religions", #lots of overwrites here, remove if you need to see it
     #"common\\scripted_values", # While script is not set up to handle individual defines it will still detect object overrides so should still check
     "gfx\\coat_of_arms\\colored_emblems", 
