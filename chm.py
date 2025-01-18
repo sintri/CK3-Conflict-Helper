@@ -39,7 +39,7 @@ ignoreFolders = [
     #"common\\scripted_values", # While script is not set up to handle individual defines it will still detect object overrides so should still check
     "gfx\\coat_of_arms\\colored_emblems", 
     "gfx\\court_scene\\scene_settings", # Keyed by name per file, shouldn't have conflicts™
-    "history\\characters",
+    #"history\\characters", # Apparently I need this one
     "history\\cultures",
     "history\\titles",
     "history\\provinces",
@@ -177,6 +177,8 @@ def main():
                 variableName = ""
                 objectKeys = []
                 objectString = ""
+                localDefines = ""
+                insertLocalDefines = True
                 for x in f:
                     lineCount+=1
                     insertRecord = False
@@ -186,6 +188,10 @@ def main():
                     commentFlag = re.search(patternComment, x)
                     if (commentFlag):
                         continue
+                        
+                    # Store local defines
+                    if x.startswith("@"):
+                        localDefines += x
                     
                     # Object might not be overwritten but still need re-indexing if occurs at this depth
                     if objectDepth== 1 and "index =" in x and not "texture_index =" in x:
@@ -196,7 +202,11 @@ def main():
                     result = getTotalCount("{",x) # Cause some people can't be trusted with proper formatting
                     if result:
                         if objectDepth == 0:
-                            objectString = ""
+                            if insertLocalDefines:
+                                objectString = localDefines
+                                insertLocalDefines = False
+                            else:
+                                objectString = ""
                             objectString += x
                         objectDepth+=result
                         #print("--->open:"+str(objectDepth)+x) # BRACE DEBUG
