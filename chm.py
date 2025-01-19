@@ -300,9 +300,11 @@ def main():
                 prevModName = ""
                 prevModContents = ""
                 if key in forceInclude:
-                    outputToFileFlag = True
+                    notSameFile = True
+                    notSameMod = True
                 else:
-                    outputToFileFlag = False
+                    notSameFile = False
+                    notSameMod = False
                 # Check if conflicts are all from the same mod or have same contents
                 for writeOut in fileOutputBuffer[key]:
                     #Parse Mod Name
@@ -310,17 +312,15 @@ def main():
                         prevModName = writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]
                     else:
                         if prevModName != writeOut[0].replace(rootDir, '').split("\\",1)[1].split("\\",1)[0]:
-                            outputToFileFlag = True
-                            break
+                            notSameMod = True
                     #Parse Mod Contents
                     if prevModContents == "":
                         prevModContents = writeOut[1]
                     else:
                         if prevModContents != writeOut[1]:
-                            outputToFileFlag = True
-                            break
-                # If conflicts all from same mod, assume the mod maker knew what they were overwriting
-                if outputToFileFlag:
+                            notSameFile = True
+                # Only output files with different contents from different mods
+                if notSameFile and notSameMod:
                     for writeOut in fileOutputBuffer[key]:
                         #Parse Mod Name
                         baseModFolder = writeOut[0].replace(rootDir, '').split("\\",1)[1]
