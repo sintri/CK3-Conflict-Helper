@@ -203,8 +203,9 @@ def main():
                     if result:
                         if objectDepth == 0:
                             if insertLocalDefines:
-                                objectString = localDefines
-                                insertLocalDefines = False
+                                if len(localDefines):
+                                    objectString = localDefines
+                                    insertLocalDefines = False
                             else:
                                 objectString = ""
                             objectString += x
