@@ -178,20 +178,19 @@ def main():
                 objectKeys = []
                 objectString = ""
                 localDefines = ""
-                insertLocalDefines = True
                 for x in f:
                     lineCount+=1
                     insertRecord = False
-                    objectString += x
-                    
                     # Check and Skip Commented Out Lines
                     commentFlag = re.search(patternComment, x)
                     if (commentFlag):
                         continue
                         
                     # Store local defines
-                    if insertLocalDefines and x.startswith("@") or x.startswith("namespace"):
+                    if x.startswith("@") or x.startswith("namespace"):
                         localDefines += x
+                    else:
+                        objectString += x
                     
                     # Object might not be overwritten but still need re-indexing if occurs at this depth
                     if objectDepth== 1 and "index =" in x and not "texture_index =" in x:
@@ -202,12 +201,9 @@ def main():
                     result = getTotalCount("{",x) # Cause some people can't be trusted with proper formatting
                     if result:
                         if objectDepth == 0:
-                            if insertLocalDefines:
-                                objectString = localDefines
-                                insertLocalDefines = False
-                            else:
-                                objectString = ""
-                            objectString += x
+                            if len(localDefines) > 0:
+                                objectString = localDefines + objectString
+                                localDefines = ""
                         objectDepth+=result
                         #print("--->open:"+str(objectDepth)+x) # BRACE DEBUG
                         if objectDepth == 1: # Parent Start
@@ -263,6 +259,7 @@ def main():
                                 if (not fileOutputBuffer.get(key)):
                                     fileOutputBuffer[key] = []
                                 fileOutputBuffer.get(key).append([value,objectString])
+                                objectString = ""
                                 objectKeys = []
                         objectDepthNeeded = 1;
                         if objectDepth < 0:
@@ -290,7 +287,7 @@ def main():
     file.write("supported_version=\""+supportVersionString+"\"")
     file.close()
     # Create Merge Files
-    print("-Merging Files")
+    print("-Generating Files")
     pbar = tqdm(total=len(conflictList))
     for key in conflictList:
         pbar.update(1)
