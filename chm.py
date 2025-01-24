@@ -190,7 +190,7 @@ def main():
                         continue
                         
                     # Store local defines
-                    if x.startswith("@"):
+                    if x.startswith("@") or x.startswith("namespace"):
                         localDefines += x
                     
                     # Object might not be overwritten but still need re-indexing if occurs at this depth
