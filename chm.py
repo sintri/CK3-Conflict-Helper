@@ -190,7 +190,7 @@ def main():
                         continue
                         
                     # Store local defines
-                    if x.startswith("@") or x.startswith("namespace"):
+                    if insertLocalDefines and x.startswith("@") or x.startswith("namespace"):
                         localDefines += x
                     
                     # Object might not be overwritten but still need re-indexing if occurs at this depth
@@ -203,9 +203,8 @@ def main():
                     if result:
                         if objectDepth == 0:
                             if insertLocalDefines:
-                                if len(localDefines):
-                                    objectString = localDefines
-                                    insertLocalDefines = False
+                                objectString = localDefines
+                                insertLocalDefines = False
                             else:
                                 objectString = ""
                             objectString += x
